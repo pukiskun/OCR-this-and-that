@@ -23,7 +23,7 @@ Repository Link: [https://github.com/pukiskun/OCR-this-and-that.git](https://git
 
 The codebase is split into independent, reusable modules:
 
-*   **`app.py`**: The main Streamlit web application. Handles interactive state management, custom UI canvas rendering, coordinate scaling, and downloads.
+*   **`streamlit_app.py`**: The main Streamlit web application. Handles interactive state management, custom UI canvas rendering, coordinate scaling, and downloads.
 *   **`alignment.py`**: High-performance OpenCV perspective registration pipeline using adaptive thresholding, ORB features, BFMatcher, and RANSAC homography.
 *   **`extractor.py`**: Handles cropped segment OCR parsing via EasyOCR.
 *   **`utils.py`**: Handles template file load/save operations and safety boundary box cropping.
@@ -50,7 +50,7 @@ The codebase is split into independent, reusable modules:
 3.  **Run the Streamlit Server**:
     Start the local Streamlit server:
     ```bash
-    streamlit run app.py
+    streamlit run streamlit_app.py
     ```
     Once loaded, the terminal will print the URL (usually `http://localhost:8501`). Open this address in your web browser.
 
@@ -70,7 +70,7 @@ This application is fully optimized to run on Streamlit's free hosting tier:
     ```
 2.  Go to [Streamlit Community Cloud](https://share.streamlit.io) and log in using your GitHub account.
 3.  Click **New app** and select your repository (`pukiskun/OCR-this-and-that`).
-4.  Set the Branch to `main` and the Main file path to `app.py`.
+4.  Set the Branch to `main` and the Main file path to `streamlit_app.py`.
 5.  Click **Deploy**. Streamlit will automatically read your `requirements.txt`, install dependencies (including PyTorch and OpenCV-headless), and launch your application under a public sharing link!
 
 ---
