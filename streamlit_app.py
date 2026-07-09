@@ -197,6 +197,8 @@ with tab1:
             elif len(st.session_state.clicks) == 2:
                 st.success(f"📏 Corners selected: {st.session_state.clicks[0]} to {st.session_state.clicks[1]}. Enter a label name on the right.")
             
+            st.caption("🖱️ **Tip**: Use your scroll wheel (or hold **Shift + Scroll** to scroll horizontally) to move around large template images.")
+            
             # Inject CSS for scrollable canvas container
             st.html("""
                 <style>
