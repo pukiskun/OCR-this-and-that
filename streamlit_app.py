@@ -197,6 +197,26 @@ with tab1:
             elif len(st.session_state.clicks) == 2:
                 st.success(f"📏 Corners selected: {st.session_state.clicks[0]} to {st.session_state.clicks[1]}. Enter a label name on the right.")
             
+            # Inject CSS for scrollable canvas container
+            st.html("""
+                <style>
+                    .st-key-scrollable_canvas_container {
+                        max-height: 600px;
+                        overflow-y: auto !important;
+                        overflow-x: auto !important;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        padding: 10px;
+                        background-color: #fdfdfd;
+                    }
+                    /* Ensure custom iframe element behaves within scroll boundaries */
+                    .st-key-scrollable_canvas_container iframe {
+                        max-width: none !important;
+                        display: block;
+                    }
+                </style>
+            """)
+            
             # Prepare image with drawn boxes/clicks
             annotated_img = draw_template_boxes(ref_img, st.session_state.fields, st.session_state.clicks)
             
@@ -205,11 +225,12 @@ with tab1:
             display_width = 700
             display_height = int(display_width * (orig_h / orig_w))
             
-            coords = streamlit_image_coordinates(
-                annotated_img,
-                width=display_width,
-                key=f"coordinate_clicker_{st.session_state.key_counter}"
-            )
+            with st.container(key="scrollable_canvas_container"):
+                coords = streamlit_image_coordinates(
+                    annotated_img,
+                    width=display_width,
+                    key=f"coordinate_clicker_{st.session_state.key_counter}"
+                )
             
             # Handle coordinate selection
             if coords is not None:
