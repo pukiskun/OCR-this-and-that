@@ -1,0 +1,6 @@
+streamlit
+streamlit-image-coordinates
+opencv-python-headless
+easyocr
+numpy
+pandas
