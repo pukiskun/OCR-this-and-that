@@ -1,7 +1,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
-.streamlit/
 .pytest_cache/
 .DS_Store
 Thumbs.db
